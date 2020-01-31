@@ -2,6 +2,6 @@ const express = require('express')
 const route = express.Router()
 const CustomerRouter = require('./routes.customers')
 
-route.use('/customers', CustomerRouter)
+route.use('/', CustomerRouter)
 
 module.exports = route

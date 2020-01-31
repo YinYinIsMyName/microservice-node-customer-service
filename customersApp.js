@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const helmet = require('helmet')
 const morgan = require('morgan')
+const eurekaHelper = require('./eureka-helper')
 //.env configure
 require('dotenv').config()
 
@@ -24,8 +25,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/v1', customerRoute)
+app.use('/', customerRoute)
 
 app.listen(PORT, () => {
     console.log(`Customers App is listening on ${PORT}`)
 })
+eurekaHelper.registerWithEureka('customer-service', PORT);
